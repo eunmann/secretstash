@@ -2,10 +2,11 @@ version: '3.8'
 
 services:
   secretstash:
-    image: secretstash:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/eunmann/secretstash:latest
+    # Uncomment to build locally instead of pulling from registry
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     container_name: secretstash
     ports:
       - "${PORT:-4566}:4566"
