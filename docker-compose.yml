@@ -9,16 +9,16 @@ services:
     #   dockerfile: Dockerfile
     container_name: secretstash
     ports:
-      - "${PORT:-4566}:4566"
+      - "${PORT:-18080}:18080"
     environment:
-      - PORT=4566
+      - PORT=18080
       - PERSISTENCE_FILE=/data/secrets.json
     volumes:
       # Mount volume for persistence (optional - comment out for ephemeral storage)
       - secrets-data:/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4566/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:18080/health"]
       interval: 30s
       timeout: 3s
       retries: 3

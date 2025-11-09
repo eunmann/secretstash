@@ -4,7 +4,7 @@
 BINARY_NAME=secrets-manager-local
 DOCKER_IMAGE=aws-secrets-manager-local
 DOCKER_TAG=latest
-PORT?=4566
+PORT?=18080
 
 help: ## Display this help message
 	@echo "Available targets:"
@@ -61,12 +61,12 @@ docker-build: ## Build Docker image
 
 docker-run: ## Run Docker container
 	@echo "Running Docker container on port $(PORT)..."
-	docker run -d --name $(BINARY_NAME) -p $(PORT):4566 $(DOCKER_IMAGE):$(DOCKER_TAG)
+	docker run -d --name $(BINARY_NAME) -p $(PORT):18080 $(DOCKER_IMAGE):$(DOCKER_TAG)
 
 docker-run-persistent: ## Run Docker container with persistence
 	@echo "Running Docker container with persistence..."
 	docker run -d --name $(BINARY_NAME) \
-		-p $(PORT):4566 \
+		-p $(PORT):18080 \
 		-v $(PWD)/data:/data \
 		$(DOCKER_IMAGE):$(DOCKER_TAG)
 

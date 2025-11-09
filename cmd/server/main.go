@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	defaultPort            = "4566"
+	defaultPort            = "18080"
 	defaultPersistenceFile = "/data/secrets.json"
 )
 

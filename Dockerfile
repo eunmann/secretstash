@@ -50,15 +50,15 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 # Expose port
-EXPOSE 4566
+EXPOSE 18080
 
 # Set default environment variables
-ENV PORT=4566
+ENV PORT=18080
 ENV PERSISTENCE_FILE=/data/secrets.json
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 -O /dev/null http://localhost:4566/health || exit 1
+    CMD wget --no-verbose --tries=1 -O /dev/null http://localhost:18080/health || exit 1
 
 # Run the application
 CMD ["./server"]
