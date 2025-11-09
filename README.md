@@ -61,14 +61,15 @@ For AWS SDK v2 (Go):
 
 ```go
 import (
+    "github.com/aws/aws-sdk-go-v2/aws"
     "github.com/aws/aws-sdk-go-v2/config"
     "github.com/aws/aws-sdk-go-v2/service/secretsmanager"
 )
 
-cfg, _ := config.LoadDefaultConfig(ctx,
-    config.WithBaseEndpoint("http://localhost:18080"),
-)
-client := secretsmanager.NewFromConfig(cfg)
+cfg, _ := config.LoadDefaultConfig(ctx)
+client := secretsmanager.NewFromConfig(cfg, func(o *secretsmanager.Options) {
+    o.BaseEndpoint = aws.String("http://localhost:18080")
+})
 ```
 
 For boto3 (Python):
